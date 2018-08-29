@@ -6,7 +6,7 @@ const Projects = props => {
 
 	if (props.projects) {
 		projectItems = props.projects.map((project, i) => (
-			<ProjectItem key={i} project={project} />
+			<ProjectItem key={i} project={project} onDelete={props.onDelete}/>
 		));
 	}
 

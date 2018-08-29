@@ -1,11 +1,12 @@
 import React from "react";
 
 const ProjectItem = props => {
-	const { title, category } = props.project;
+	const { id, title, category } = props.project;
 
 	return (
 		<li>
-			<strong>{title}</strong> - {category}
+			<strong>{title}</strong> - {category}{" "}
+			<span onClick={() => props.onDelete(id)}>X</span>
 		</li>
 	);
 };
