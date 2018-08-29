@@ -20,21 +20,24 @@ const AddProject = props => {
 		<div>
 			<h3>Add Project</h3>
 			<form
-				onSubmit={event => {
+				onSubmit={e => {
+					e.preventDefault();
 					if (title) {
-						onSubmitHandler(event, title, category);
+						onSubmitHandler(title, category);
+					} else {
+						alert('Title Is Required !');
 					}
 				}}
 			>
 				<div>
 					<label>Title</label>
 					<br />
-					<input type="text" onChange={event => (title = event.target.value)} />
+					<input type="text" onChange={e => (title = e.target.value)} />
 				</div>
 				<div>
 					<label>Category</label>
 					<br />
-					<select onChange={event => (category = event.target.value)}>
+					<select onChange={e => (category = e.target.value)}>
 						{categoryOptions}
 					</select>
 				</div>

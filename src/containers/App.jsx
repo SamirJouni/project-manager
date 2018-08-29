@@ -29,9 +29,10 @@ class App extends Component {
 		this.setState({projects});
 	}
 
-	handleSubmit = (e, title, category) => {
-		e.preventDefault();
-		console.log(title, category);
+	handleSubmit = (title, category) => {
+		const projects = [...this.state.projects];
+		projects.push({title: title, category: category},);
+		this.setState({projects});
 	}
 
 	render() {
