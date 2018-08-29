@@ -41,8 +41,9 @@ const AddProject = props => {
 						{categoryOptions}
 					</select>
 				</div>
+				<br />
 				<input type="submit" value="submit" />
-			</form>
+			</form><br/>
 		</div>
 	);
 };
