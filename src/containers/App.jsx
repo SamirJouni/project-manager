@@ -29,11 +29,16 @@ class App extends Component {
 		this.setState({projects});
 	}
 
+	handleSubmit = (e, title, category) => {
+		e.preventDefault();
+		console.log(title, category);
+	}
+
 	render() {
 		return (
 			<React.Fragment>
 				<h2>Projects</h2>
-				<AddProject />
+				<AddProject onSubmitHandler={this.handleSubmit}/>
 				<Projects projects={this.state.projects} />
 			</React.Fragment>
 		);
