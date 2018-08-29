@@ -12,7 +12,6 @@ const Projects = props => {
 
 	return (
 		<div>
-			Projects
 			{projectItems}
 		</div>
 	);
