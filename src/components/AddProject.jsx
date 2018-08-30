@@ -14,7 +14,6 @@ const AddProject = props => {
 
 	return (
 		<div>
-			<h3>Add Project</h3>
 			<form
 				onSubmit={e => {
 					e.preventDefault();
