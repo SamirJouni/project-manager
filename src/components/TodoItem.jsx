@@ -1,11 +1,9 @@
 import React from "react";
 
 const TodoItem = props => {
-	const {title} = props.todo;
-
 	return (
 		<li>
-			<strong>{title}</strong>
+			<strong>{props.todo.title}</strong>
 		</li>
 	);
 };

@@ -14,13 +14,14 @@ const AddProject = props => {
 
 	return (
 		<div>
+			<h2>ADD PROJECT</h2>
 			<form
 				onSubmit={e => {
 					e.preventDefault();
 					if (title.value) {
 						onSubmitHandler(title.value, category.value);
-						title.value='';
-						category.value=defaultProps.categories[0];
+						title.value = "";
+						category.value = defaultProps.categories[0];
 					} else {
 						alert("Title Is Required !");
 					}
@@ -29,19 +30,12 @@ const AddProject = props => {
 				<div>
 					<label>Title</label>
 					<br />
-					<input
-						type="text"
-						ref={ el => title = el }
-					/>
+					<input type="text" ref={el => (title = el)} />
 				</div>
 				<div>
 					<label>Category</label>
 					<br />
-					<select
-						ref={ el => category = el }
-						>
-						{categoryOptions}
-					</select>
+					<select ref={el => (category = el)}>{categoryOptions}</select>
 				</div>
 				<br />
 				<input type="submit" value="submit" />
