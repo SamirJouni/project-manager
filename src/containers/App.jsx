@@ -8,7 +8,10 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			projects: []
+			projects: [],
+			defaultProps: {
+				categories: []
+			}
 		};
 	}
 
@@ -30,7 +33,8 @@ class App extends Component {
 				category: "web development"
 			}
 		];
-		this.setState({ projects });
+		const defaultProps = {categories: ["Web Design", "Web Development", "Mobile Development"]};
+		this.setState({ projects, defaultProps});
 	}
 
 	handleSubmit = (title, category) => {
@@ -48,7 +52,7 @@ class App extends Component {
 		return (
 			<React.Fragment>
 				<h2>Projects</h2>
-				<AddProject onSubmitHandler={this.handleSubmit} />
+				<AddProject defaultProps={this.state.defaultProps} onSubmitHandler={this.handleSubmit}/>
 				<Projects projects={this.state.projects} onDelete={this.handleDelete}/>
 			</React.Fragment>
 		);

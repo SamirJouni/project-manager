@@ -1,11 +1,7 @@
 import React from "react";
 
 const AddProject = props => {
-	const { onSubmitHandler } = props;
-
-	const defaultProps = {
-		categories: ["Web Design", "Web Development", "Mobile Development"]
-	};
+	const { defaultProps, onSubmitHandler } = props;
 
 	const categoryOptions = defaultProps.categories.map((category, i) => (
 		<option key={i} value={category}>
@@ -22,28 +18,36 @@ const AddProject = props => {
 			<form
 				onSubmit={e => {
 					e.preventDefault();
-					if (title) {
-						onSubmitHandler(title, category);
+					if (title.value) {
+						onSubmitHandler(title.value, category.value);
+						title.value='';
+						category.value=defaultProps.categories[0];
 					} else {
-						alert('Title Is Required !');
+						alert("Title Is Required !");
 					}
 				}}
 			>
 				<div>
 					<label>Title</label>
 					<br />
-					<input type="text" onChange={e => (title = e.target.value)} />
+					<input
+						type="text"
+						ref={ el => title = el }
+					/>
 				</div>
 				<div>
 					<label>Category</label>
 					<br />
-					<select onChange={e => (category = e.target.value)}>
+					<select
+						ref={ el => category = el }
+						>
 						{categoryOptions}
 					</select>
 				</div>
 				<br />
 				<input type="submit" value="submit" />
-			</form><br/>
+			</form>
+			<br />
 		</div>
 	);
 };
