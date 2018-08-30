@@ -27,7 +27,7 @@ const AddProject = props => {
 					}
 				}}
 			>
-				<div>
+				<div style={{marginBottom:'.8rem', marginTop:'1.3rem'}}>
 					<label>Title</label>
 					<br />
 					<input type="text" ref={el => (title = el)} />
