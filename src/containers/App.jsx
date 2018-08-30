@@ -11,30 +11,56 @@ class App extends Component {
 			projects: [],
 			defaultProps: {
 				categories: []
-			}
+			},
+			todos: []
 		};
 	}
 
-	componentWillMount() {
-		const projects = [
-			{
-				id: uuid.v4(),
-				title: "business website",
-				category: "web design"
-			},
-			{
-				id: uuid.v4(),
-				title: "social app",
-				category: "mobile development"
-			},
-			{
-				id: uuid.v4(),
-				title: "shopping cart",
-				category: "web development"
+	getProjects = () => {
+		this.setState({
+			projects: [
+				{
+					id: uuid.v4(),
+					title: "business website",
+					category: "web design"
+				},
+				{
+					id: uuid.v4(),
+					title: "social app",
+					category: "mobile development"
+				},
+				{
+					id: uuid.v4(),
+					title: "shopping cart",
+					category: "web development"
+				}
+			]
+		});
+	};
+	getDefaultProps = () => {
+		this.setState({
+			defaultProps: {
+				categories: ["Web Design", "Web Development", "Mobile Development"]
 			}
-		];
-		const defaultProps = {categories: ["Web Design", "Web Development", "Mobile Development"]};
-		this.setState({ projects, defaultProps});
+		});
+	};
+	getTodos = () => {
+		fetch("https://jsonplaceholder.typicode.com/todos")
+			.then(response => response.json())
+			.then(todos => this.setState({ todos }))
+			.catch(console.log);
+	};
+
+	componentWillMount() {
+		this.getProjects();
+		this.getDefaultProps();
+		this.getTodos();
+	}
+
+	componentDidMount() {
+		this.getProjects();
+		this.getDefaultProps();
+		this.getTodos();
 	}
 
 	handleSubmit = (title, category) => {
@@ -43,17 +69,20 @@ class App extends Component {
 		this.setState({ projects });
 	};
 
-	handleDelete = (id) => {
+	handleDelete = id => {
 		const projects = this.state.projects.filter(p => p.id !== id);
-		this.setState({projects});
-	}
+		this.setState({ projects });
+	};
 
 	render() {
 		return (
 			<React.Fragment>
 				<h2>Projects</h2>
-				<AddProject defaultProps={this.state.defaultProps} onSubmitHandler={this.handleSubmit}/>
-				<Projects projects={this.state.projects} onDelete={this.handleDelete}/>
+				<AddProject
+					defaultProps={this.state.defaultProps}
+					onSubmitHandler={this.handleSubmit}
+				/>
+				<Projects projects={this.state.projects} onDelete={this.handleDelete} />
 			</React.Fragment>
 		);
 	}
