@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Projects from "../components/Projects";
 import AddProject from "../components/AddProject";
+import Todos from "../components/Todos";
 import uuid from "uuid";
 import "./App.css";
 
@@ -37,7 +38,7 @@ class App extends Component {
 			]
 		});
 	};
-	getDefaultProps = () => {
+	getDefaultProperties = () => {
 		this.setState({
 			defaultProps: {
 				categories: ["Web Design", "Web Development", "Mobile Development"]
@@ -53,13 +54,13 @@ class App extends Component {
 
 	componentWillMount() {
 		this.getProjects();
-		this.getDefaultProps();
+		this.getDefaultProperties();
 		this.getTodos();
 	}
 
 	componentDidMount() {
 		this.getProjects();
-		this.getDefaultProps();
+		this.getDefaultProperties();
 		this.getTodos();
 	}
 
@@ -83,6 +84,8 @@ class App extends Component {
 					onSubmitHandler={this.handleSubmit}
 				/>
 				<Projects projects={this.state.projects} onDelete={this.handleDelete} />
+				<hr />
+				<Todos todos={this.state.todos}/>
 			</React.Fragment>
 		);
 	}
