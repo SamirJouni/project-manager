@@ -78,13 +78,15 @@ class App extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<h2>Projects</h2>
+				<h2>ADD PROJECT</h2>
 				<AddProject
 					defaultProps={this.state.defaultProps}
 					onSubmitHandler={this.handleSubmit}
 				/>
+				<h2>PROJECTS</h2>
 				<Projects projects={this.state.projects} onDelete={this.handleDelete} />
 				<hr />
+				<h2>TODOS</h2>
 				<Todos todos={this.state.todos}/>
 			</React.Fragment>
 		);
